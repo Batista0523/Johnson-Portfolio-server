@@ -21,6 +21,7 @@ const getOneProperty = async (id) => {
   }
 };
 
+
 const createProperty = async (property) => {
   try {
     const createdProperty = await db.one(
