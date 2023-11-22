@@ -1,4 +1,4 @@
-const require = "../db/dbConfig.js";
+const db =require("../db/dbConfig.js");
 
 const getAllProperties = async () => {
   try {
