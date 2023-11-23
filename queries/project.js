@@ -1,4 +1,4 @@
-const db =require("../db/dbConfig.js");
+const db = require("../db/dbConfig.js");
 
 const getAllProperties = async () => {
   try {
@@ -21,11 +21,10 @@ const getOneProperty = async (id) => {
   }
 };
 
-
 const createProperty = async (property) => {
   try {
     const createdProperty = await db.one(
-      "INSERT INTO property ( title,descriptions,imageurl,builddate,contact,review,available,price,homeaddress) VALUES ($1, $2,$3,$4,$5,$6,$7,$8,$9) RETURNING *",
+      "INSERT INTO property ( title,descriptions,imageurl,builddate,contact,review,available,price,homeaddress) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9) RETURNING *",
       [
         property.title,
         property.descriptions,
@@ -47,7 +46,7 @@ const createProperty = async (property) => {
 const deleteProperty = async (id) => {
   try {
     const deletedProperty = await db.one(
-      "DELETE from property WHERE id=$1 RETURNING *",
+      "DELETE FROM property WHERE id=$1 RETURNING *",
       id
     );
     return deletedProperty;
@@ -58,8 +57,20 @@ const deleteProperty = async (id) => {
 
 const updateProperty = async (id, property) => {
   try {
+    const {
+      title,
+      descriptions,
+      imageurl,
+      builddate,
+      contact,
+      review,
+      available,
+      price,
+      homeaddress,
+    } = property;
+
     const updatedProperty = await db.one(
-      "UPDATE property SET title=$1, descriptions=$2, imageurl=$3, builddate=$4, contact=$5, review=$6, available=$7, price=$8, homeaddress=$8 WHERE id=$10 RETURNING *",
+      "UPDATE property SET title=$1, descriptions=$2, imageurl=$3, builddate=$4, contact=$5, review=$6, available=$7, price=$8, homeaddress=$9 WHERE id=$10 RETURNING *",
       [
         title,
         descriptions,
@@ -73,9 +84,10 @@ const updateProperty = async (id, property) => {
         id,
       ]
     );
+
     return updatedProperty;
   } catch (err) {
-    return err;
+    throw err;
   }
 };
 

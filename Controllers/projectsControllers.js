@@ -21,6 +21,7 @@ property.get("/:id", async (req, res) => {
 });
 
 property.get("/", async (req, res) => {
+  console.log("GET Request received for all items.");
   const allProperty = await getAllProperties();
   if (allProperty[0]) {
     res.status(200).json({ success: true, data: { payload: allProperty } });
@@ -40,6 +41,8 @@ property.post("/", async (req, res) => {
 
 property.delete("/:id", async (req, res) => {
   try {
+    const { id } = req.params;
+    console.log(`DELETE request for item at id ${id} recieved.`);
     const deletedProperty = await deleteProperty(id);
     if (deletedProperty) {
       res
@@ -55,11 +58,13 @@ property.delete("/:id", async (req, res) => {
 
 property.put("/:id", async (req, res) => {
   const { id } = req.params;
+  console.log(`PUT request for item at id ${id} received.`);
   const updatedProperty = await updateProperty(id, req.body);
+  console.log(updatedProperty);
   if (updatedProperty.id) {
     res.status(200).json(updatedProperty);
   } else {
-    res.status(404).json("no property found with taht id");
+    res.status(404).json("no books found with that id");
   }
 });
 
