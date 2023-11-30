@@ -94,7 +94,7 @@ VALUES (
 ),(
    'Francis York',
   'One of the Most Beautiful Homes For Sale in Illinois',
-    'https://media.salecore.com/salesaspects/shared/GlobalImageLibrary/RealEstate/FullScreen/Exterior/real-estate-home-exterior-15-1760-1000.jpg',
+    'https://images.adsttc.com/media/images/5ecd/d4ac/b357/65c6/7300/009d/large_jpg/02C.jpg?1590547607',
     2022-09-07,
     '800-825-9224',
     4.9,
