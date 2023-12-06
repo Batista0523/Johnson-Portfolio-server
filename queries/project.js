@@ -3,7 +3,6 @@ const db = require("../db/dbConfig.js");
 const getAllProperties = async () => {
   try {
     const allProperties = await db.any("SELECT * FROM property");
-    console.log(error)
     return allProperties;
   } catch (err) {
     return err;
