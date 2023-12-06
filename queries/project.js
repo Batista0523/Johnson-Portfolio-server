@@ -19,7 +19,6 @@ const getOneProperty = async (id) => {
     
     return getOneProperty;
   } catch (error) {
-    console.log(error)
     return error;
   }
 };
