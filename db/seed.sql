@@ -1,5 +1,6 @@
 
 \c portfolios_dev;
+
 INSERT INTO property (
     title,
     descriptions,
