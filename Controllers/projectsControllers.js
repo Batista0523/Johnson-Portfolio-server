@@ -23,6 +23,7 @@ property.get("/:id", async (req, res) => {
 property.get("/", async (req, res) => {
   console.log("GET Request received for all items.");
   const allProperty = await getAllProperties();
+  console.log(allProperty);
   if (allProperty[0]) {
     res.status(200).json({ success: true, data: { payload: allProperty } });
   } else {
